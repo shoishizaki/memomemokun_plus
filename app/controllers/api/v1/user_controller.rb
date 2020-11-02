@@ -8,14 +8,14 @@ class Api::V1::UserController < ApplicationController
   def create
     begin
       user = User.create!(user_params)
-      message = "ユーザーの登録に成功しました。"
-      render :json => message
+      user_id = User.find_by(email: params[:user][:email]).id
+      render :json => user_id, status: 200
     rescue ActiveRecord::RecordInvalid
       message = "メールアドレスまたはパスワードが不正な値です。もう一度入力し直してください"
-      render :json => message
+      render :json => message, status: 422
     rescue
       message = "原因不明のエラーが発生しました。開発者にお問い合わせください。"
-      render :json => message
+      render :json => message, status: 500
     end
   end
 

@@ -1,8 +1,5 @@
 <template>
   <v-app>
-    <v-alert v-if="show_success" type="success">
-      {{ message }}
-    </v-alert>
     <v-alert v-if="show_error" type="error">
       {{ message }}
     </v-alert>
@@ -49,7 +46,6 @@ export default {
         email: null,
         password: null
       },
-      show_success: false,
       show_error: false,
       message: ""
     }
@@ -67,21 +63,22 @@ export default {
 
       axios
         .post('/api/v1/user', params)
-        .then(response => (this.message = response.data, console.log(response)))
-        .then(() => (this.showFlash()))
+        .then(response => (this.successHandler()))
+        .catch((error) => (this.errorHandler(error.response["data"])))
+    },
+
+    successHandler() {
+      window.location.href = "/"
+    },
+
+    errorHandler(error_message) {
+      this.message = error_message
+      this.showFlash()
     },
 
     showFlash() {
-      if(this.message === "メールアドレスまたはパスワードが不正な値です。もう一度入力し直してください") {
         this.show_error = true
         setTimeout(() => {this.show_error = false}, 10000)
-      } else if(this.message === "ユーザーの登録に成功しました。") {
-        this.show_success = true
-        setTimeout(() => {this.show_success = false}, 10000)
-      } else if(this.message === "原因不明のエラーが発生しました。開発者にお問い合わせください。") {
-        this.show_error = true
-        setTimeout(() => {this.show_success = false}, 10000)
-      }
     }
   }
 }
