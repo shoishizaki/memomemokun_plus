@@ -19,6 +19,7 @@
           <v-row justify="center">
             <v-col cols="4">
               <v-text-field v-model="user['password']" label="パスワード" placeholder="パスワード" type="password" outlined></v-text-field>
+              <p>パスワードは8文字以上で入力してください。</p>
             </v-col>
           </v-row>
           <v-row justify="center">
@@ -85,4 +86,8 @@ export default {
 </script>
 
 <style scoped>
+p {
+  font-size: 5px;
+  color: #F44336
+}
 </style>
