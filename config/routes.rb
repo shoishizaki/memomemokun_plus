@@ -7,10 +7,11 @@ Rails.application.routes.draw do
       resources :sessions, only: [:create]
 
       get "/get_login_user", to: "sessions#get_login_user"
+      delete "/logout", to: "sessions#destroy"
     end
   end
 
   root to: 'home#index'
   get "/signup", to: "signup#index"
-  get '/session', to: "session#new"
+  get '/login', to: "session#new"
 end

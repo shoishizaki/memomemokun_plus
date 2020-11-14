@@ -23,4 +23,9 @@ class Api::V1::SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    logout
+    render :json => {}, status: 200
+  end
+
 end
