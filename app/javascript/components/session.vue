@@ -14,6 +14,7 @@
           <v-row justify="center">
             <v-col cols="4">
               <v-text-field v-model="user['password']" label="パスワード" placeholder="パスワード" type="password" outlined></v-text-field>
+              <a href="/signup">ユーザーを登録されていない方はこちら</a>
             </v-col>
           </v-row>
           <v-row justify="center">
@@ -78,4 +79,7 @@ export default {
 </script>
 
 <style scoped>
+a {
+  font-size: 5px;
+}
 </style>
