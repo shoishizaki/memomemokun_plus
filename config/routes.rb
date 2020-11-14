@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # APIコントローラへのルーティング
   namespace :api do
     namespace :v1 do
-      resources :user, only: [:index, :create]
+      resources :user, only: [:create]
       resources :sessions, only: [:create]
 
       get "/get_login_user", to: "sessions#get_login_user"

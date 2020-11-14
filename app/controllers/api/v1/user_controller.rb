@@ -1,9 +1,5 @@
 class Api::V1::UserController < ApplicationController
-
-  def index
-    user = User.all
-    render :json => user
-  end
+  before_action :no_authenticate_user, {only: [:create]}
 
   def create
     begin

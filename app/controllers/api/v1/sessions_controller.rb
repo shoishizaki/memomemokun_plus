@@ -1,4 +1,6 @@
 class Api::V1::SessionsController < ApplicationController
+  before_action :authenticate_user, {only: [:get_login_user, :destroy]}
+  before_action :no_authenticate_user, {only: [:create]}
 
   def create
     begin
