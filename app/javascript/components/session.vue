@@ -8,23 +8,17 @@
         <v-form>
           <v-row justify="center">
             <v-col cols="4">
-              <v-text-field v-model="user['name']" label="名前" placeholder="名前" outlined></v-text-field>
-            </v-col>
-          </v-row>
-          <v-row justify="center">
-            <v-col cols="4">
               <v-text-field v-model="user['email']" label="メールアドレス" placeholder="メールアドレス" outlined></v-text-field>
             </v-col>
           </v-row>
           <v-row justify="center">
             <v-col cols="4">
               <v-text-field v-model="user['password']" label="パスワード" placeholder="パスワード" type="password" outlined></v-text-field>
-              <p>パスワードは8文字以上で入力してください。</p>
-              <a href="/login">すでにユーザーを登録を完了している方はこちら</a>
+              <a href="/signup">ユーザーを登録されていない方はこちら</a>
             </v-col>
           </v-row>
           <v-row justify="center">
-            <v-btn @click="submit" large color="primary" dark>登録</v-btn>
+            <v-btn @click="submit" large color="primary" dark>ログイン</v-btn>
           </v-row>
         </v-form>
       </v-col>
@@ -44,7 +38,6 @@ export default {
   data() {
     return {
       user: {
-        name: null,
         email: null,
         password: null
       },
@@ -57,14 +50,13 @@ export default {
     submit () {
       const params = {
         user: {
-          name: this.user.name,
           email: this.user.email,
           password: this.user.password
         }
       }
 
       axios
-        .post('/api/v1/user', params)
+        .post('/api/v1/sessions', params)
         .then(response => (this.successHandler()))
         .catch((error) => (this.errorHandler(error.response["data"])))
     },
@@ -87,11 +79,6 @@ export default {
 </script>
 
 <style scoped>
-p {
-  font-size: 5px;
-  color: #F44336
-}
-
 a {
   font-size: 5px;
 }
