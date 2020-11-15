@@ -69,7 +69,7 @@ export default {
     drawer: false,
     menus: [
       { title: 'Home', icon: 'mdi-home', url: '/' },
-      { title: 'Memo', icon: 'mdi-card-text-outline', url: '#' },
+      { title: 'Memo', icon: 'mdi-card-text-outline', url: '/memo' },
       { title: 'ToDo', icon: 'mdi-format-list-checks', url: '#' },
       { title: 'MyPage', icon: 'mdi-web', url: '#' }
     ],
