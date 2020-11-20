@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="navigation">
     <v-navigation-drawer app v-model="drawer" temporary>
 
       <v-list-item>
@@ -105,4 +105,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+#navigation {
+  margin-bottom: 70px;
+}
+</style>

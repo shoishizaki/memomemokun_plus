@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
       get "/get_login_user", to: "sessions#get_login_user"
       delete "/logout", to: "sessions#destroy"
+
+      resources :memos, only: [:create]
     end
   end
 
