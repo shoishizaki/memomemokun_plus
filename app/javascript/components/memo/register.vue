@@ -75,6 +75,9 @@ export default {
 
     successHandler() {
       this.dialog = false
+      this.message = ""
+      this.memo.category = ""
+      this.memo.content = ""
       this.$emit('send-message', "メモの作成が完了しました");
     },
 

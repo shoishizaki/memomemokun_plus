@@ -63,6 +63,10 @@ h1 {
   margin-left: 30px;
 }
 
+#alert {
+  margin-left: 20px;
+}
+
 .slide-fade-enter-active {
   transition: all .3s ease;
 }
