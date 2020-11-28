@@ -1,6 +1,12 @@
 class Api::V1::MemosController < ApplicationController
   before_action :authenticate_user
 
+  def index
+    @current_user = current_user
+    info = Memo.where(user_id: current_user.id)
+    render :json => info, status: 200
+  end
+
   def create
     begin
       user = Memo.create!(memo_params)

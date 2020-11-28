@@ -10,6 +10,8 @@ Rails.application.routes.draw do
       delete "/logout", to: "sessions#destroy"
 
       resources :memos, only: [:create]
+
+      get "memos", to: "memos#index"
     end
   end
 

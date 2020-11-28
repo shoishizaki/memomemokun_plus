@@ -1,18 +1,30 @@
 <template>
   <v-app>
-    <navigation/>
-    <transition name="slide-fade">
-      <div id="alert" v-if="show">
-        <v-alert type="success" elevation="12" width="400">
-          {{ message }}
-        </v-alert>
-      </div>
-    </transition>
-    <h1>メモ一覧</h1>
-    <div id="register">
-      <register-modal :user_id="user_id" @send-message="showAlert"/>
-    </div>
-    <h1>Hello</h1>
+    <v-container>
+      <v-row>
+        <navigation/>
+      </v-row>
+      <v-row>
+        <transition name="slide-fade">
+          <div id="alert" v-if="show">
+            <v-alert type="success" elevation="12" width="400">
+              {{ message }}
+            </v-alert>
+          </div>
+        </transition>
+      </v-row>
+      <h1>メモ一覧</h1>
+      <v-row>
+        <v-col cols="12">
+          <div id="register">
+            <register-modal :user_id="user_id" @send-message="showAlert"/>
+          </div>
+          <div id="list">
+            <list :user_id="user_id"/>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
   </v-app>
 </template>
 
@@ -20,6 +32,7 @@
 import axios from 'axios';
 import navigation from "../common/navigation"
 import register_modal from "./register"
+import list from "./list"
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -44,7 +57,8 @@ export default {
 
   components: {
     "navigation": navigation,
-    "register-modal": register_modal
+    "register-modal": register_modal,
+    "list": list
   },
 
   methods: {
@@ -59,8 +73,12 @@ export default {
 
 <style scoped>
 h1 {
-  margin-top: 30px;
-  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+#register {
+  margin-bottom: 20px;
+  margin-left: 15px;
 }
 
 #alert {
