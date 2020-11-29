@@ -20,7 +20,7 @@
             <register-modal :user_id="user_id" @send-message="showAlert"/>
           </div>
           <div id="list">
-            <list :user_id="user_id" @send-message="showAlert"/>
+            <list :user_id="user_id" :memos="memos" @send-message="showAlert"/>
           </div>
         </v-col>
       </v-row>
@@ -45,14 +45,14 @@ export default {
       dialog: false,
       user_id: null,
       message: null,
-      show: false
+      show: false,
+      memos: []
     }
   },
 
   created: function() {
-    axios
-      .get("/api/v1/get_login_user")
-      .then(response => (this.user_id = response.data.id))
+    this.getLoginUserId()
+    this.getMemosList()
   },
 
   components: {
@@ -66,7 +66,20 @@ export default {
       scrollTo(0, 0);
       this.message = message
       this.show = true
+      this.getMemosList()
       setTimeout(() => {this.show = false}, 10000)
+    },
+
+    getLoginUserId() {
+      axios
+        .get("/api/v1/get_login_user")
+        .then(response => (this.user_id = response.data.id))
+    },
+
+    getMemosList() {
+      axios
+        .get("/api/v1/memos")
+        .then(response => (this.memos = response.data))
     }
   }
 }

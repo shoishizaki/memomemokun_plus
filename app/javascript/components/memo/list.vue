@@ -47,7 +47,7 @@ axios.defaults.headers.common = {
 };
 
 export default {
-  props:["user_id"],
+  props:["user_id", "memos"],
 
   components: {
     "edit": edit,
@@ -57,15 +57,8 @@ export default {
 
   data() {
     return {
-      memos: [],
       text_status: false
     }
-  },
-
-  created: function() {
-    axios
-      .get("/api/v1/memos")
-      .then(response => (this.memos = response.data))
   },
 
   methods: {
