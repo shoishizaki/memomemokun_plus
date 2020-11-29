@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-simple-table fixed-header height="700px">
+    <v-simple-table fixed-header height="800px">
       <template v-slot:default>
         <thead>
           <tr>
@@ -8,6 +8,7 @@
             <th class="text-left">内容</th>
             <th class="text-left">作成日</th>
             <th class="text-left">更新日</th>
+            <th class="text-left">操作</th>
           </tr>
         </thead>
         <tbody>
@@ -16,6 +17,11 @@
             <td>{{ item.content }}</td>
             <td>{{ item.created_at }}</td>
             <td>{{ item.updated_at }}</td>
+            <td>
+              <v-btn color="light-blue" style="margin-top: 10px; margin-bottom: 10px">表示</v-btn><br>
+              <v-btn color="lime" style="margin-bottom: 10px">編集</v-btn><br>
+              <v-btn color="orange" style="margin-bottom: 10px">削除</v-btn>
+            </td>
           </tr>
         </tbody>
       </template>

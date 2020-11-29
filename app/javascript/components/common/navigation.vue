@@ -48,7 +48,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app>
+    <v-app-bar color="#1DE9B6" app>
       <!-- アプリケーションバー -->
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
     </v-app-bar>

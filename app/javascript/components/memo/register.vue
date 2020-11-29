@@ -2,8 +2,8 @@
   <v-row justify="left" height="100px">
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="primary" dark v-bind="attrs" v-on="on" >
-          新規作成
+        <v-btn light fab v-bind="attrs" v-on="on" id="btn" elevation="0">
+          <v-icon>mdi-plus-circle-outline</v-icon>
         </v-btn>
       </template>
       <v-card>
@@ -89,5 +89,9 @@ export default {
 <style scoped>
 p {
   color: #F44336
+}
+
+#btn {
+  margin: 0 0 0 auto;
 }
 </style>

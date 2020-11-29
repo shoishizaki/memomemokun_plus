@@ -52,7 +52,7 @@ export default {
   created: function() {
     axios
       .get("/api/v1/get_login_user")
-      .then(response => (this.user_id = response.data.id, console.log(response.data.id)))
+      .then(response => (this.user_id = response.data.id))
   },
 
   components: {
@@ -72,12 +72,8 @@ export default {
 </script>
 
 <style scoped>
-h1 {
-  margin-bottom: 30px;
-}
 
 #register {
-  margin-bottom: 20px;
   margin-left: 15px;
 }
 
