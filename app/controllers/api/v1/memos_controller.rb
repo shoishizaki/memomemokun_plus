@@ -36,6 +36,18 @@ class Api::V1::MemosController < ApplicationController
     end
   end
 
+  def destroy
+    begin
+      memo = Memo.find(params[:id])
+      memo.destroy!
+      message = "メモを削除しました。"
+      render :json => message, status: 200
+    rescue
+      message = "原因不明のエラーが発生しました。開発者にお問い合わせください。"
+      render :json => message, status: 500
+    end
+  end
+
   private
 
   def memo_params

@@ -63,6 +63,7 @@ export default {
 
   methods: {
     showAlert(message) {
+      scrollTo(0, 0);
       this.message = message
       this.show = true
       setTimeout(() => {this.show = false}, 10000)

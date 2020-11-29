@@ -25,7 +25,7 @@
                 <edit :memos="item" :user_id="user_id" :text_status="text_status" color="lime" @send-message="sendMessage"/>
               </div>
               <div id="delete">
-                <v-btn color="orange">削除</v-btn>
+                <delete-modal :memo="item" @send-message="sendMessage"/>
               </div>
             </td>
           </tr>
@@ -39,6 +39,7 @@
 import axios from 'axios';
 import edit from "./edit"
 import memo_modal from "./memo_modal"
+import delete_modal from "./delete"
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -50,7 +51,8 @@ export default {
 
   components: {
     "edit": edit,
-    "memo-modal": memo_modal
+    "memo-modal": memo_modal,
+    "delete-modal": delete_modal
   },
 
   data() {
@@ -77,13 +79,11 @@ export default {
 <style scoped>
 #edit {
   margin-bottom: 10px;
-  margin-left: 12px;
 }
 
 #memo-modal {
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-left: 12px;
 }
 
 #delete {
