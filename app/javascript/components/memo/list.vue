@@ -19,10 +19,10 @@
             <td>{{ item.updated_at }}</td>
             <td>
               <div id="memo-modal">
-                <v-btn color="light-blue">表示</v-btn>
+                <memo-modal :memos="item" :user_id="user_id" @send-message="sendMessage"/>
               </div>
               <div id="edit">
-                <edit :memos="item" :user_id="user_id" @send-message="sendMessage"/>
+                <edit :memos="item" :user_id="user_id" :text_status="text_status" color="lime" @send-message="sendMessage"/>
               </div>
               <div id="delete">
                 <v-btn color="orange">削除</v-btn>
@@ -38,6 +38,7 @@
 <script>
 import axios from 'axios';
 import edit from "./edit"
+import memo_modal from "./memo_modal"
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -48,19 +49,21 @@ export default {
   props:["user_id"],
 
   components: {
-    "edit": edit
+    "edit": edit,
+    "memo-modal": memo_modal
   },
 
   data() {
     return {
-      memos: []
+      memos: [],
+      text_status: false
     }
   },
 
   created: function() {
     axios
       .get("/api/v1/memos")
-      .then(response => (this.memos = response.data, console.log(response)))
+      .then(response => (this.memos = response.data))
   },
 
   methods: {
@@ -80,6 +83,7 @@ export default {
 #memo-modal {
   margin-top: 10px;
   margin-bottom: 10px;
+  margin-left: 12px;
 }
 
 #delete {
