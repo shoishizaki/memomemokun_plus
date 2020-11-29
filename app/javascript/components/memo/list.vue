@@ -18,9 +18,15 @@
             <td>{{ item.created_at }}</td>
             <td>{{ item.updated_at }}</td>
             <td>
-              <v-btn color="light-blue" style="margin-top: 10px; margin-bottom: 10px">表示</v-btn><br>
-              <v-btn color="lime" style="margin-bottom: 10px">編集</v-btn><br>
-              <v-btn color="orange" style="margin-bottom: 10px">削除</v-btn>
+              <div id="memo-modal">
+                <v-btn color="light-blue">表示</v-btn>
+              </div>
+              <div id="edit">
+                <edit :memos="item" :user_id="user_id" @send-message="sendMessage"/>
+              </div>
+              <div id="delete">
+                <v-btn color="orange">削除</v-btn>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -31,6 +37,7 @@
 
 <script>
 import axios from 'axios';
+import edit from "./edit"
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -39,6 +46,10 @@ axios.defaults.headers.common = {
 
 export default {
   props:["user_id"],
+
+  components: {
+    "edit": edit
+  },
 
   data() {
     return {
@@ -50,9 +61,28 @@ export default {
     axios
       .get("/api/v1/memos")
       .then(response => (this.memos = response.data, console.log(response)))
+  },
+
+  methods: {
+    sendMessage(message) {
+      this.$emit('send-message', message);
+    }
   }
 }
 </script>
 
 <style scoped>
+#edit {
+  margin-bottom: 10px;
+  margin-left: 12px;
+}
+
+#memo-modal {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#delete {
+  margin-bottom: 10px
+}
 </style>

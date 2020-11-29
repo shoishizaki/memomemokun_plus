@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 
       resources :memos, only: [:create]
 
-      get "memos", to: "memos#index"
+      get "/memos", to: "memos#index"
+      patch "/memos", to: "memos#update"
     end
   end
 

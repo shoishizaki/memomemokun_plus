@@ -20,7 +20,7 @@
             <register-modal :user_id="user_id" @send-message="showAlert"/>
           </div>
           <div id="list">
-            <list :user_id="user_id"/>
+            <list :user_id="user_id" @send-message="showAlert"/>
           </div>
         </v-col>
       </v-row>
@@ -72,11 +72,6 @@ export default {
 </script>
 
 <style scoped>
-
-#register {
-  margin-left: 15px;
-}
-
 #alert {
   margin-left: 20px;
 }
