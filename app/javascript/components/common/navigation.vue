@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="navigation">
     <v-navigation-drawer app v-model="drawer" temporary>
 
       <v-list-item>
@@ -48,7 +48,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app>
+    <v-app-bar color="#1DE9B6" app>
       <!-- アプリケーションバー -->
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
     </v-app-bar>
@@ -69,7 +69,7 @@ export default {
     drawer: false,
     menus: [
       { title: 'Home', icon: 'mdi-home', url: '/' },
-      { title: 'Memo', icon: 'mdi-card-text-outline', url: '#' },
+      { title: 'Memo', icon: 'mdi-card-text-outline', url: '/memo' },
       { title: 'ToDo', icon: 'mdi-format-list-checks', url: '#' },
       { title: 'MyPage', icon: 'mdi-web', url: '#' }
     ],
@@ -105,4 +105,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+#navigation {
+  margin-bottom: 70px;
+}
+</style>
