@@ -15,8 +15,8 @@
           <tr v-for="item in memos" :key="item.name">
             <td>{{ item.category }}</td>
             <td>{{ item.content }}</td>
-            <td>{{ item.created_at }}</td>
-            <td>{{ item.updated_at }}</td>
+            <td>{{ formatDate(item.created_at) }}</td>
+            <td>{{ formatDate(item.updated_at) }}</td>
             <td>
               <div id="memo-modal">
                 <memo-modal :memos="item" :user_id="user_id" @send-message="sendMessage"/>
@@ -64,6 +64,10 @@ export default {
   methods: {
     sendMessage(message) {
       this.$emit('send-message', message);
+    },
+
+    formatDate(str_date) {
+      return str_date.slice(0, -14);
     }
   }
 }
