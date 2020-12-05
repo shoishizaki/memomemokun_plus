@@ -13,11 +13,14 @@ Rails.application.routes.draw do
 
       get "/memos", to: "memos#index"
       patch "/memos", to: "memos#update"
+
+      resources :todos, only: [:create]
     end
   end
 
-  root to: 'home#index'
+  root to: "home#index"
   get "/signup", to: "signup#index"
-  get '/login', to: "session#new"
-  get '/memo', to: "memo#index"
+  get "/login", to: "session#new"
+  get "/memo", to: "memo#index"
+  get "/todo", to: "todo#index"
 end
