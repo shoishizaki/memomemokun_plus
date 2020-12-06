@@ -19,6 +19,9 @@
           <div id="register">
             <register-modal :user_id="user_id" @send-message="showAlert"/>
           </div>
+          <div id="list">
+            <list :user_id="user_id" :todos="todos" @send-message="showAlert"/>
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -29,6 +32,7 @@
 import axios from 'axios';
 import navigation from "../common/navigation"
 import register_modal from "./register"
+import list from "./list"
 
 export default {
   data() {
@@ -36,16 +40,19 @@ export default {
       user_id: null,
       message: null,
       show: false,
+      todos: []
     }
   },
 
   created: function() {
     this.getLoginUserId()
+    this.getTodosList()
   },
 
   components: {
     "navigation": navigation,
     "register-modal": register_modal,
+    "list": list
   },
 
   methods: {
@@ -53,6 +60,12 @@ export default {
       axios
         .get("/api/v1/get_login_user")
         .then(response => (this.user_id = response.data.id))
+    },
+
+    getTodosList() {
+      axios
+        .get("/api/v1/todos")
+        .then(response => (this.todos = response.data))
     },
 
     showAlert(message) {

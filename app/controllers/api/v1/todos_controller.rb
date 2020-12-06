@@ -1,21 +1,20 @@
 class Api::V1::TodosController < ApplicationController
   before_action :authenticate_user
 
+  def index
+    @current_user = current_user
+    info = Todo.where(user_id: current_user.id)
+    render :json => info, status: 200
+  end
+
   def create
-    
     # 期日がstringで送られるので、型を変更する
     params[:todo][:deadline] = DateTime.parse(params[:todo][:deadline])
-    puts "=" * 100
-    puts params
-    puts "=" * 100
     begin
       Todo.create!(todo_params)
       message = "ToDoリストに追加しました。"
       render :json => message, status: 200
     rescue ActiveRecord::RecordInvalid => e
-      puts "=" * 100
-      puts e
-      puts "=" * 100
       message = "タスクは必ず入力してください"
       render :json => message, status: 422
     rescue
