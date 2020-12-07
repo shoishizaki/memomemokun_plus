@@ -23,6 +23,21 @@ class Api::V1::TodosController < ApplicationController
     end
   end
 
+  def update
+    begin
+      todo = Todo.find_by(id: params[:todo][:id])
+      todo.update!(todo_params)
+      message = "ToDoを編集しました。"
+      render :json => message, status: 200
+    rescue ActiveRecord::RecordInvalid
+      message = "タスクは必ず入力してください"
+      render :json => message, status: 422
+    rescue => e
+      message = "原因不明のエラーが発生しました。開発者にお問い合わせください。"
+      render :json => message, status: 500
+    end
+  end
+
   private
 
   def todo_params

@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       patch "/memos", to: "memos#update"
 
       resources :todos, only: [:index, :create]
+
+      patch "/todos", to: "todos#update"
     end
   end
 

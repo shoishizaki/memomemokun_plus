@@ -17,6 +17,11 @@
             </td>
             <td>{{ item.task }}</td>
             <td>{{ formmatDateTime(item.deadline) }}</td>
+            <td>
+              <div id="edit">
+                <edit :todos="item" :user_id="user_id" @send-message="sendMessage"/>
+              </div>
+            </td>
           </tr>
         </tbody>
       </template>
@@ -26,6 +31,7 @@
 
 <script>
 import axios from 'axios';
+import edit from "./edit"
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -36,6 +42,7 @@ export default {
   props:["user_id", "todos"],
 
   components: {
+    "edit": edit
   },
 
   data() {
@@ -58,6 +65,7 @@ export default {
 
 <style scoped>
 #edit {
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
