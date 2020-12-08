@@ -72,6 +72,7 @@ export default {
       scrollTo(0, 0);
       this.message = message
       this.show = true
+      this.getTodosList()
       setTimeout(() => {this.show = false}, 10000)
     },
   }
