@@ -38,6 +38,18 @@ class Api::V1::TodosController < ApplicationController
     end
   end
 
+  def destroy
+    begin
+      todo = Todo.find(params[:id])
+      todo.destroy!
+      message = "ToDoを削除しました。"
+      render :json => message, status: 200
+    rescue
+      message = "原因不明のエラーが発生しました。開発者にお問い合わせください。"
+      render :json => message, status: 500
+    end
+  end
+
   private
 
   def todo_params

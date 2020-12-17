@@ -24,6 +24,9 @@
               <div id="edit">
                 <edit :todos="item" :user_id="user_id" @send-message="sendMessage"/>
               </div>
+              <div id="delete">
+                <delete-btn :info="item" @send-message="sendMessage"/>
+              </div>
             </td>
           </tr>
         </tbody>
@@ -37,6 +40,7 @@ import axios from 'axios';
 import edit from "./edit"
 import detail from "./detail"
 import completed_checkbox from "./completed_checkbox"
+import delete_btn from "./delete"
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -49,7 +53,8 @@ export default {
   components: {
     "edit": edit,
     "detail": detail,
-    "completed-checkbox": completed_checkbox
+    "completed-checkbox": completed_checkbox,
+    "delete-btn": delete_btn
   },
 
   data() {

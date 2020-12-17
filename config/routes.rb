@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get "/memos", to: "memos#index"
       patch "/memos", to: "memos#update"
 
-      resources :todos, only: [:index, :create]
+      resources :todos, only: [:index, :create, :destroy]
 
       patch "/todos", to: "todos#update"
     end
