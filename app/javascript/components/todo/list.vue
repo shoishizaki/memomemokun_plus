@@ -13,7 +13,7 @@
         <tbody>
           <tr v-for="item in todos" :key="item.name">
             <td>
-              <v-checkbox v-model="item.completed" color="success" hide-details/>
+              <completed-checkbox :info="item" @send-message="sendMessage"/>
             </td>
             <td>{{ item.task }}</td>
             <td>{{ formmatDateTime(item.deadline) }}</td>
@@ -36,6 +36,7 @@
 import axios from 'axios';
 import edit from "./edit"
 import detail from "./detail"
+import completed_checkbox from "./completed_checkbox"
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -47,7 +48,8 @@ export default {
 
   components: {
     "edit": edit,
-    "detail": detail
+    "detail": detail,
+    "completed-checkbox": completed_checkbox
   },
 
   data() {
