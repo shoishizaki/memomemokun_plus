@@ -4,4 +4,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
   validates :email, presence: true, uniqueness: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }
   validates :password, presence: true, length: { minimum: 8 }
+
+  has_many :memos
+  has_many :todo
 end
