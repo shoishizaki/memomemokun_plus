@@ -19,6 +19,7 @@
           <h3>個人情報</h3>
           <v-expansion-panels accordion>
             <name-display :user="user" @send-message="showAlert"/>
+            <email-display :user="user" @send-message="showAlert"/>
           </v-expansion-panels>
         </v-col>
       </v-row>
@@ -29,7 +30,8 @@
 <script>
 import axios from 'axios';
 import navigation from "../common/navigation"
-import name_display from "./ personal_information_list/name"
+import name_display from "./personal_information_list/name"
+import email_display from "./personal_information_list/email"
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -53,7 +55,8 @@ export default {
 
   components: {
     "navigation": navigation,
-    "name-display": name_display
+    "name-display": name_display,
+    "email-display": email_display
   },
 
   methods: {
