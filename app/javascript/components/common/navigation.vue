@@ -71,7 +71,7 @@ export default {
       { title: 'Home', icon: 'mdi-home', url: '/' },
       { title: 'Memo', icon: 'mdi-card-text-outline', url: '/memo' },
       { title: 'ToDo', icon: 'mdi-format-list-checks', url: '/todo' },
-      { title: 'MyPage', icon: 'mdi-web', url: '#' }
+      { title: 'MyPage', icon: 'mdi-web', url: '/mypage' }
     ],
     user: {
       name: null,
