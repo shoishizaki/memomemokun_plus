@@ -79,7 +79,7 @@ export default {
 
 <style scoped>
 h3 {
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 #alert {

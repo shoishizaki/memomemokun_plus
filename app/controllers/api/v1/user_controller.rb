@@ -1,5 +1,6 @@
 class Api::V1::UserController < ApplicationController
   before_action :no_authenticate_user, {only: [:create]}
+  before_action :authenticate_user, {only: [:update]}
 
   def create
     begin
