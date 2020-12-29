@@ -1,0 +1,10 @@
+Default:
+  Todo:
+    loop: 200
+    col:
+      user_id: F|User
+      completed: [true, false, false, false, false]
+      deadline: <Ptool.gen_created_at(1000, "2021-01-01", true)>
+      priority: [0, 1, 2]
+      created_at: <Ptool.gen_created_at(1000, "2021-01-01", true)>
+      updated_at: <Ptool.gen_updated_at(maked_col[:Todo][:created_at], true)>

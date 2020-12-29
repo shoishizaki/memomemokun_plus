@@ -1,0 +1,8 @@
+Default:
+  Memo:
+    loop: 200
+    col:
+      user_id: F|User
+      category: ["IT", "スポーツ", "教育", "科学", "経済", "政治", "投資"]
+      created_at: <Ptool.gen_created_at(1000, "2021-01-01", true)>
+      updated_at: <Ptool.gen_updated_at(maked_col[:Memo][:created_at], true)>
